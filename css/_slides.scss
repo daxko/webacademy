@@ -1,0 +1,241 @@
+@charset "utf-8";
+
+// Slide Variables
+
+$slideWidth: 1210px;
+$linkColor: #09d;
+$secondaryColor: #4d4E53;
+$baseFontSize: 1.5em;
+$codeBackgroundColor: #f1f1f1;
+$fragmentSelectedColor: #c0dfed;
+
+
+// Slide Elements
+
+a {
+  color: $linkColor;
+}
+
+section h1,
+section h2,
+section h3 {
+  margin-top: 1em;
+}
+
+section :first-child {
+  margin-top: 0;
+}
+
+.slides ul li {
+  margin-top: 0.5em;
+}
+
+section {
+  width: 100%;
+  left: -50%;
+  position: absolute;
+  @include transition(opacity ease-in-out 350ms);
+}
+
+.slides {
+  width: $slideWidth !important;
+  font-size: $baseFontSize;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  overflow: visible;
+}
+
+ul.inline li {
+  float: left;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+}
+
+footer {
+  font-size: 0.8em;
+  margin-top: 3em;
+
+  ul {
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+
+// Slides
+
+#start {
+  color: #fff;
+}
+
+@media screen {
+  .screen-only {
+    display: none;
+  }
+}
+
+.secondary {
+  margin-top: -1.5em;
+  color: $secondaryColor;
+}
+
+.past, .future {
+  opacity: 0;
+}
+
+.present {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.current-fragment.selected {
+  content: "";
+  background-color: $fragmentSelectedColor;
+  box-shadow: 0 0 0 2px $fragmentSelectedColor, 0 0 0 7px darken($fragmentSelectedColor, 10%);
+  z-index: -1;
+}
+
+.fragment.fade {
+  opacity: 0;
+  @include transition(opacity ease-in-out 350ms);
+}
+
+.fade.absolute {
+  position: absolute;
+}
+
+.current-fragment.fade {
+  opacity: 1;
+}
+
+.fragment.bold {
+  @include transition(font-size ease-in-out 350ms);
+}
+
+.current-fragment.bold {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+
+// Content Editable & Code Blocks
+
+[contenteditable] {
+  display: block;
+  background: #f9f9f9;
+  padding: 1em;
+  white-space: pre;
+  outline: 0;
+}
+
+code pre[contenteditable] {
+  background: transparent;
+  padding: 0;
+  font-size: 0.75em;
+}
+
+.live-edit {
+  margin-top: 1em;
+}
+
+.live-edit p {
+  margin-top: 0;
+}
+
+.slides style:focus {
+  outline: 0;
+}
+
+pre {
+  display: block;
+  margin: 0;
+}
+
+code {
+  color: #000;
+  margin-top: 1em;
+  display: block;
+  padding: 0.8em;
+  border-left: 10px solid darken($codeBackgroundColor, 5%);
+  background-color: $codeBackgroundColor;
+}
+
+// Override the default background color for highlight.js
+code.hljs {
+  background-color: $codeBackgroundColor;
+}
+
+code.inline {
+  margin-top: 0;
+  display: inline-block;
+  padding: 0.3em;
+  border-left: 0;
+  font-style: normal;
+  border-radius: 0.3em;
+}
+
+code textarea {
+  font-family: monospace;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  overflow: auto;
+}
+
+
+// Slide Navigation
+
+.navigate-right,
+.navigate-left {
+  position: absolute;
+  font-size: 4em;
+  height: 1em;
+  width: 1em;
+  display: block;
+  top: 50%;
+  margin-top: -0.5em;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  display: none;
+  cursor: pointer;
+  color: #fff;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &.enabled {
+    display: block;
+  }
+}
+
+.navigate-right {
+  right: 0.5em;
+  &:before {
+    @include carat(#fff, 0.25em);
+  }
+}
+
+.navigate-left {
+  left: 0.5em;
+  &:before {
+    @include carat(#fff, 0.25em, -225deg);
+    margin-left: -0.15em;
+  }
+}
+
+// Slide specific styling
+
+#start img {
+  max-height: 96px;
+  position: absolute;
+}
+
+#start header {
+  margin-left: 100px;
+}

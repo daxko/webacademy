@@ -1,0 +1,885 @@
+<!doctype html>
+<html>
+<head>
+  <title>Css Fundamentals | Web Academy</title>
+  <meta charset="utf-8"/>
+  <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+  <link href="../../css/slides.min.css" rel="stylesheet" type="text/css"/>
+
+  <script type="text/javascript" src="../../js/reveal.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+
+      <section id="start" data-background="#79C786">
+        <img src="../../images/css3.png" height="96" />
+        <header>
+          Web Academy
+          <h1>CSS Fundamentals</h1>
+        </header>
+      </section>
+
+
+      <section id="no-scoped" class="screen-only">
+        <p>There are interactive style blocks in this presentation. <span class="chrome other">Try changing the <em>color</em> value.</span></p>
+        <style data-trim contenteditable="true" scoped>
+p {
+  color: black;
+}
+        </style>
+        <p class="chrome other hide">...but your browser doesn't support this feature. <span class="other hide">Try using <a href="http://google.com/chrome">Chrome</a> or <a href="http://mozilla.org/en-US/firefox/new/‎">Firefox</a></span></p>
+        <p class="chrome hide">Please enable the "experimental Web Platform features" flag in <code class="inline">chrome://flags</code></p>
+      </section>
+
+
+      <section id="what-is-css">
+        <h2>What is CSS?</h2>
+        <p class="secondary">Fully known as Cascading Style Sheets</p>
+        <p>Describes how a page should be styled for a particular document</p>
+        <p>Helps seperate style and presentation from content</p>
+      </section>
+
+
+      <section id="include-styles">
+        <h1>You can include styles in several different ways...</h1>
+        <h3>Inline</h3>
+        <pre><code><span style="color: green;">bacon</span></code></pre>
+        <h3>Embedded</h3>
+        <pre><code data-trim>
+<style type="text/css">
+  span { color: green; }
+</style>
+        </code></pre>
+        <h3>External</h3>
+        <pre><code>&lt;link rel="stylesheet" href="style.css" /&gt;</code></pre>
+      </section>
+
+
+      <section id="include-styles-2">
+        <p class="secondary">However, please avoid using inline and embeded styles when possible</p
+        <p>This...</p>
+        <pre><code>&lt;link rel="stylesheet" href="style.css" /&gt;</code></pre>
+        <p>...is what you want to use to include stylesheets.</p>
+        <p>Embeded and inline styles can get messy and difficult to maintain. Additionally, by linking stylesheets we're seperating <strong>content</strong> and <strong>style</strong></p>
+      </section>
+
+
+      <section id="cascading">
+        <h1>Cascading</h1>
+        <p class="secondary">Styles can cascade through different stylesheets and take priority based on the following order:</p>
+        <style type="text/css" scoped>
+          em {
+            color: #595959;
+            font-weight: 100;
+            position: absolute;
+            left: 35%;
+          }
+        </style>
+        <ol>
+          <li class="fragment bold" data-fragment-index="1">Browser default styles <em class="fragment fade" data-fragment-index="1">Every browser has a default stylesheet</em></li>
+          <li class="fragment bold" data-fragment-index="2">User-specified stylesheets <em class="fragment fade" data-fragment-index="2">Some browsers allow users to create their own stylesheets</em></li>
+          <li class="fragment bold" data-fragment-index="3">External stylesheet <em class="fragment fade" data-fragment-index="3">Linked or referenced stylesheets</em></li>
+          <li class="fragment bold" data-fragment-index="4">Internal stylesheet <em class="fragment fade" data-fragment-index="4">Style tags listed in the document</em></li>
+          <li class="fragment bold" data-fragment-index="5">Inline styles <em class="fragment fade" data-fragment-index="5">Styles listed on an element</em></li>
+        </ol>
+        <p class="fragment fade" data-fragment-index="6">
+          If any of the styles has the same selectors or priority, the latest one will "win"
+        </p>
+      </section>
+
+
+      <section id="css-rule">
+        <div style="margin-bottom: 1em;">
+          <h1 class="fragment fade" data-fragment-index="0"><em>This is what CSS looks like...</em></h1>
+          <div class="fragment selected" data-fragment-index="1">
+<pre style="font-size: 2em;"><span class="fragment selected" data-fragment-index="2">em</span> <span class="fragment selected" data-fragment-index="3">{</span>
+  <span class="fragment selected" data-fragment-index="4">font-size</span>: <span class="fragment selected" data-fragment-index="5">12px</span>;
+<span class="fragment selected" data-fragment-index="3">}</span></pre>
+          </div>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="1">
+          <h2>Rule</h2>
+          <p>In CSS, this is a rule. It contains everything telling the browser what elements to apply the given styles to</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="2">
+          <h2>Selector</h2>
+          <p>The selector is an expression that matches elements on the page to apply styles contained within the following block. This can be a number of different things, but we'll go over that in a minute</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="3">
+          <h2>Declaration Block</h2>
+          <p>Styles are grouped in blocks, starting and ending with opening and closing braces.</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="4">
+          <h2>Property</h2>
+          <p>The property part of the rule specifies what style property to apply</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="5">
+          <h2>Value</h2>
+          <p>The value part of the rule specifies the property value. The valid values you can put here all depend on the type of property you are using</p>
+        </div>
+      </section>
+
+
+      <section id="inheritance">
+        <h1>Inheritance</h1>
+        <p class="secondary">Child elements inherit styles from parents and ancestors</p>
+        <pre style="font-size: 1.6em;" data-trim>
+<div class="fragment selected" data-fragment-index="1">p {
+  color: red;
+}</div>
+<div class="fragment selected" data-fragment-index="2">span {
+  font-weight: bold;
+}</div>
+        </pre>
+        <div style="margin-top: 1em;">
+          <style type="text/css" scoped>
+            p.red.visible {
+              color: red;
+            }
+
+            span.bold.visible {
+              font-weight: bold;
+            }
+          </style>
+          <p class="fragment red" data-fragment-index="1">
+            <span class="fragment bold" data-fragment-index="2">Bacon</span> ipsum dolor sit amet brisket
+            <span class="fragment bold" data-fragment-index="2">pork</span> belly
+            <span class="fragment bold" data-fragment-index="2">shank</span> tri-tip.
+          </p>
+          <pre><code data-trim data-noescape>
+<span class="fragment selected" data-fragment-index="1">&lt;p&gt;</span>
+  <span class="fragment selected" data-fragment-index="2">&lt;span&gt;Bacon&lt;/span&gt;</span> ipsum dolor sit amet brisket
+  <span class="fragment selected" data-fragment-index="2">&lt;span&gt;pork&lt;/span&gt;</span> belly
+  <span class="fragment selected" data-fragment-index="2">&lt;span&gt;shank&lt;/span&gt;</span> tri-tip.
+<span class="fragment selected" data-fragment-index="1">&lt;/p&gt;</span>
+          </code></pre>
+        </div>
+      </section>
+
+
+      <section id="basic-selectors"><h1>Basic Selectors</h1></section>
+
+
+      <section id="element-selector">
+        <h1>Element Selector</h2>
+        <p class="secondary">Matches any element with the correspoding element type</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+span {
+  color: red;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="class-selector">
+        <h1>Class Selector</h2>
+        <p class="secondary">Matches any elements with the given class</p>
+        <p>In stylesheets, classes start with a period <code class="inline">.class-name</code></p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+.class2 {
+  font-style: italic;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="id-selector">
+        <h1>Id Selector</h2>
+        <p class="secondary">Matches an element with the given id</p>
+        <p>In stylesheets, ids start with a hash <code class="inline">#id-name</code></p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+#id {
+  background-color: lightblue;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="attribute-selector">
+        <h1>Attribute Selectors</h1>
+        <p class="secondary">Matches elements with the given attribute</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+[href="http://google.com"] {
+  color: red;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;a href="http://google.com"&gt;Google&lt;/a&gt;
+&lt;a href="http://amazon.com"&gt;Amazon&lt;/a&gt;
+&lt;a href="http://microsoft.com"&gt;Microsoft&lt;/a&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="more-on-attribute-selector">
+        <h1>More on Attribute Selectors</h1>
+        <p class="secondary">You can be more specific about the types of values you want to match</p>
+        <ul>
+          <li><code class="inline">[attr]</code> Element <em>has</em> attribute</li>
+          <li><code class="inline">[attr=value]</code> Attribute <strong>must</strong> match value</li>
+          <li><code class="inline">[attr*=value]</code> Attribute <em>contains</em> the value somewhere</li>
+          <li><code class="inline">[attr^=value]</code> Attribute <em>starts with</em> the value</li>
+          <li><code class="inline">[attr$=value]</code> Attribute <em>ends with</em> the value</li>
+          <li><code class="inline">[attr~=value]</code> Attribute is in a space seperated list</li>
+        </ul>
+      </section>
+
+
+      <section id="universal-selector">
+        <h1>Universal Selector</h2>
+        <p class="secondary">Matches any element</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+* {
+  text-decoration: underline;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+      <section id="combining-selectors">
+        <h1>Combining Selectors</h2>
+        <p class="secondary">You can combine classes, ids, as well as attributes and psuedo classes to make a more specific selector</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+span.class1 {
+  color: red;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class1"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+      <section id="multiple-selectors">
+        <h1>Multiple Selectors</h2>
+        <p class="secondary">You target multiple selectors by seperating with a comma <code class="inline">selector1, selector2</code></p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+span, em {
+  text-decoration: underline;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;p&gt;
+  &lt;span class="class1"&gt;Bacon&lt;/span&gt;
+  ipsum dolor sit amet tongue rump kevin &lt;em&gt;pastrami&lt;/em&gt;.
+&lt;/p&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="relational-selectors"><h1>Relational Selectors (Combinators)</h1></section>
+
+      <section id="descendent-selectors">
+        <h1>Descendent Selector</h2>
+        <p class="secondary">Matches the right-hand selector that is a descendant of the previous selector</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+p span {
+  font-weight: bold;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+  &lt;span&gt;Turducken filet&lt;/span&gt; mignon jerky, short loin pastrami shoulder.
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="child-selector">
+        <h1>Child Selector</h2>
+        <p class="secondary">Matches the right-hand selector that is a direct child of the previous selector</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+p > span {
+  font-size: 150%;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+  &lt;span&gt;Turducken filet&lt;/span&gt; mignon jerky, short loin pastrami shoulder.
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="sibling-selector">
+        <h1>Sibling Selector</h2>
+        <p class="secondary">Matches the right-hand selector that is the next sibling of the previous selector</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+p + span {
+  background-color: green;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+  &lt;span&gt;Turducken filet&lt;/span&gt; mignon jerky, short loin pastrami shoulder.
+  Pork belly short loin &lt;span&gt;pork loin&lt;/span&gt; corned beef
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="general-sibling-selector">
+        <h1>General Sibling Selector</h2>
+        <p class="secondary">Matches the right-hand selector that is any sibling following the previous selector</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+p ~ span {
+  border: 1px solid gray;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+  &lt;span&gt;Turducken filet&lt;/span&gt; mignon jerky, short loin pastrami shoulder.
+  Pork belly short loin &lt;span&gt;pork loin&lt;/span&gt; corned beef
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+      <section id="psuedo-classes-elements"><h1>Psuedo Classes/Element</h1></section>
+
+      <section id="hover-selector">
+        <h1>:hover selector</h2>
+        <p class="secondary">Matches any element that currently has a "hover" state</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+p:hover {
+  color: red;
+}
+          </style>
+        <code>
+          <pre contenteditable="true" data-trim>
+&lt;p&gt;Bacon&lt;/p&gt;
+&lt;p&gt;Turducken&lt;/p&gt;
+&lt;p&gt;Pork belly&lt;/p&gt;
+          </pre>
+        </code>
+        </div>
+      </section>
+
+
+      <section id="focus-selector">
+        <h1>:focus selector</h2>
+        <p class="secondary">Matches any element that currently has a "focus" state</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+input:focus {
+  border: 2px dashed gray;
+}
+          </style>
+          <code>
+            <pre contenteditable="true">&lt;input type="text" /&gt;</pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="first-child-selector">
+        <h1>:first-child selector</h2>
+        <p class="secondary">Matches an element that is the first child of its parent</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+span:first-child {
+  color: #bad;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;span&gt;Turducken filet&lt;/span&gt; mignon jerky, short loin pastrami shoulder.
+    Pork belly short loin &lt;span&gt;pork loin&lt;/span&gt; corned beef
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="not-selector">
+        <h1>:not selector</h2>
+        <p class="secondary">Excludes elements not matching selector</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+span:not(.class2) {
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;div id="id" class="class1"&gt;
+  &lt;p&gt;
+    &lt;span class="class2"&gt;Bacon&lt;/span&gt;
+    ipsum dolor sit amet tongue rump kevin pastrami.
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;span&gt;Turducken filet&lt;/span&gt; mignon jerky, short loin pastrami shoulder.
+    Pork belly short loin &lt;span&gt;pork loin&lt;/span&gt; corned beef
+  &lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="psuedo-elements">
+        <h1>:before and :after psuedo elements</h2>
+        <p class="secondary">Creates a psuedo element for the matching elements</p>
+        <div>
+          <style scoped contenteditable="true" data-trim>
+p:before {
+  content: "I ♥ ";
+}
+p:after {
+  content: " very much";
+}
+          </style>
+          <code>
+            <pre contenteditable="true">&lt;p&gt;Bacon&lt;/p&gt;</pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="more-psuedo-elements">
+        <p class="secondary">There is a number of different psuedo classes and elements, and we can't go over all of them. Some of which include:</p>
+        <ul class="inline cf">
+          <li><code class="inline">:active</code></li>
+          <li><code class="inline">:active</code></li>
+          <li><code class="inline">:checked</code></li>
+          <li><code class="inline">:first-of-type</code></li>
+          <li><code class="inline">:first-letter</code></li>
+          <li><code class="inline">:last-child</code></li>
+          <li><code class="inline">:last-of-type</code></li>
+          <li><code class="inline">:link</code></li>
+          <li><code class="inline">:last-of-type</code></li>
+          <li><code class="inline">:selection</code></li>
+          <li><code class="inline">:nth-child()</code></li>
+          <li><code class="inline">:visited</code></li>
+        </ul>
+        <p>...and more. See MDN documentation for more on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">psuedo elements</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">psuedo classes</a></p>
+      </section>
+
+
+      <section id="css-properties">
+        <h1>CSS Properties</h1>
+      </section>
+
+
+      <section id="css-colors">
+        <h1>Colors</h1>
+        <p class="secondary">Color properties can be defined in a number of different ways</p>
+
+        <h3>By Name</h3>
+        <pre><code>p { color: green; }</code></pre>
+
+        <h3>Hex Value</h3>
+        <pre><code>p { color: #00ff00; }</code></pre>
+
+        <h3>RGB</h3>
+        <pre><code>p { color: rgb(0, 255, 0); }</code></pre>
+
+        <h3>HSL</h3>
+        <pre><code>p { color: hsl(120, 100%, 50%); }</code></pre>
+      </section>
+
+
+      <section id="transparent-colors">
+        <h1>Transparent Colors</h1>
+        <p class="secondary">Colors can also be transparent when using rgba or hsla</p>
+
+        <h4>RGBA</h4>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true">p { color: rgba(255, 0, 0, 0.5); }</style>
+        </div>
+
+        <h4>HSLA</h4>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true">p { color: hsla(0, 100%, 50%, 0.5); }</style>
+        </div>
+      </section>
+
+
+      <section id="hex-shorthand">
+        <h1>Hex Shorthand</h1>
+        <p class="secondary">You can also use shorthand hex values</p>
+
+        <pre><code>p { color: #ff0000; }</code></pre>
+        <p>is equivalent to</p>
+        <pre><code>p { color: #f00; }</code></pre>
+      </section>
+
+
+      <section id="fixed-dimensions">
+        <h1>Fixed Dimensions</h1>
+
+        <h3>px</h3>
+        <p class="secondary">Typically used to size screen elements</p>
+
+        <div>
+          <p>Bacon ipsum</p>
+          <style type="text/css" scoped contenteditable data-trim>
+p {
+  font-size: 16px;
+}
+          </style>
+          <style type="text/css" scoped>
+            p {
+              font-smooth: never;
+              color: #f00;
+            }
+          </style>
+        </div>
+
+        <h3>pt</h3>
+        <p class="secondary">Only used in print - 72pts = 1 inch on paper</p>
+      </section>
+
+
+      <section id="relative-dimensions">
+        <h1>Relative Dimensions</h1>
+
+        <h3>em</h3>
+        <p class="secondary">Used to size elements relative to the size of the inherited font</p>
+
+        <h3>rem</h3>
+        <p class="secondary">Used to size elements relative to the font size of the root element (typically <code class="inline">&lt;html&gt;</code>)</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true" data-trim>
+p {
+  font-size: 1em;
+  border-left: 1rem solid #4e4;
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section id="percent-dimensions">
+        <h1>Relative Dimensions (Percent)</h1>
+        <p class="secondary">Percents can be used in height/width properties and font sizes</p>
+
+        <h3>font-size</h3>
+        <p class="secondary">Relative to the inherited font size</p>
+
+        <h3>width/height</h3>
+        <p class="secondary">Relative to the dimensions of the parent element</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true" data-trim>
+p {
+  display: inline-block;
+  font-size: 100%;
+  width: 50%;
+  background-color: #eee;
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section id="margins">
+        <h1>Margins</h1>
+        <p class="secondary">Positive or negative dimensions outside of a box</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true" data-trim>
+p {
+  display: inline-block;
+  margin-left: 100px;
+  border: 1px solid #000;
+  background-color: #eee;
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section id="padding">
+        <h1>Padding</h1>
+        <p class="secondary">Positive dimensions inside of a box</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true" data-trim>
+p {
+  display: inline-block;
+  padding-left: 100px;
+  border: 1px solid #000;
+  background-color: #eee;
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section id="text-properties">
+        <h1>Text Properties</h1>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <style type="text/css" scoped contenteditable="true" data-trim>
+p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  color: #f00;
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section id="css-specificity">
+        <h1>CSS Specificity</h1>
+      </section>
+
+
+      <section id="css-specificity-more">
+        <h1>CSS Specificity</h1>
+        <p class="secondary">The last rule defined is not always a "winner"</p>
+        <div>
+          <style type="text/css" scoped contenteditable="true" data-trim>
+.myClass {
+  color: red;
+}
+
+p {
+  color: green;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;p class="myClass"&gt;Hello&lt;/p&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section>
+        <h1>Calculating CSS Specificity</h1>
+        <p class="secondary">Count the # of each type of attribute, this will determine the specificity</p>
+        <table>
+          <thead>
+            <tr>
+              <th>inline styles</th>
+              <th>ids</th>
+              <th>class, attributes, and psuedo classes</th>
+              <th>elements and psuedo elements</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="fragment fade absolute" data-fragment-index="0">0</span>
+                <span class="fragment fade absolute" data-fragment-index="1">0</span>
+                <span class="fragment fade absolute" data-fragment-index="2">0</span>
+                <span class="fragment fade absolute" data-fragment-index="3">0</span>
+                <span class="fragment fade absolute" data-fragment-index="4">0</span>
+                <span class="fragment fade absolute" data-fragment-index="5">0</span>
+                <span class="fragment fade absolute" data-fragment-index="6">0</span>
+              </td>
+              <td>
+                <span class="fragment fade absolute" data-fragment-index="0">0</span>
+                <span class="fragment fade absolute" data-fragment-index="1">0</span>
+                <span class="fragment fade absolute" data-fragment-index="2">0</span>
+                <span class="fragment fade absolute" data-fragment-index="3">0</span>
+                <span class="fragment fade absolute" data-fragment-index="4">0</span>
+                <span class="fragment fade absolute" data-fragment-index="5">1</span>
+                <span class="fragment fade absolute" data-fragment-index="6">1</span>
+              </td>
+              <td>
+                <span class="fragment fade absolute" data-fragment-index="0">0</span>
+                <span class="fragment fade absolute" data-fragment-index="1">0</span>
+                <span class="fragment fade absolute" data-fragment-index="2">0</span>
+                <span class="fragment fade absolute" data-fragment-index="3">1</span>
+                <span class="fragment fade absolute" data-fragment-index="4">1</span>
+                <span class="fragment fade absolute" data-fragment-index="5">0</span>
+                <span class="fragment fade absolute" data-fragment-index="6">1</span>
+              </td>
+              <td>
+                <span class="fragment fade absolute" data-fragment-index="0">0</span>
+                <span class="fragment fade absolute" data-fragment-index="1">1</span>
+                <span class="fragment fade absolute" data-fragment-index="2">2</span>
+                <span class="fragment fade absolute" data-fragment-index="3">0</span>
+                <span class="fragment fade absolute" data-fragment-index="4">1</span>
+                <span class="fragment fade absolute" data-fragment-index="5">0</span>
+                <span class="fragment fade absolute" data-fragment-index="6">3</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rule">
+          <span class="fragment fade absolute" data-fragment-index="1">em { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="2">em p { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="3">.myClass { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="4">.myClass p { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="5">#myId { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="6">#myId > p em .class + a { ... }</span>
+        </div>
+        <footer>
+          <ul>
+            <li><a href="http://www.w3.org/TR/selectors/#specificity">CSS3 Specificity Specification</a></li>
+          </ul>
+        </footer>
+        <style type="text/css" scoped>
+          table {
+            margin: 1em auto;
+            width: 60%;
+            border-collapse: separate;
+            border-spacing: 0.5em;
+          }
+
+          table thead {
+            color: #959595;
+          }
+
+          table td,
+          table th {
+            text-align: center;
+            width: 25%;
+          }
+
+          table tbody td {
+            font-size: 3em;
+            background-color: #eee;
+            border-radius: 0.3em;
+            height: 1.6em;
+            line-height: 0;
+          }
+
+          .rule {
+            text-align: center;
+            font-size: 2em;
+          }
+        </style>
+      </section>
+
+
+      <section id="resources">
+        <h1>Resources</h1>
+        <p class="secondary">The web is your friend ♥</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Mozilla Developer Network</a></li>
+          <li><a href="http://caniuse.com">Can I Use...</a></li>
+          <li><a href="http://csstricks.com">Css Tricks</a></li>
+          <li><a href="http://codeacademy.com">Code Academy</a></li>
+          <li><a href="http://www.abookapart.com/products/css3-for-web-designers">CSS3 for Web Designers</a></li>
+        </ul>
+      </section>
+
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="slide.js"></script>
+
+</body>
+</html>

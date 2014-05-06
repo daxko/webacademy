@@ -1,0 +1,31 @@
+@mixin transition($properties) {
+  -webkit-transition: $properties;
+  -moz-transition: $properties;
+  -o-transition: $properties;
+  transition: $properties;
+}
+
+@mixin transform($properties) {
+  -webkit-transform: $properties;
+  -moz-transform: $properties;
+  -o-transition: $properties;
+  transition: $properties;
+}
+
+@mixin carat($color, $size: 1em, $rotate: -45deg) {
+  position: relative;
+  content: "";
+  display: block;
+  height: $size;
+  width: $size;
+  border-color: $color;
+  border-style: solid;
+  border-width: $size/2;
+  border-top-width: 0;
+  border-left-width: 0;
+  left: 50%;
+  top: 50%;
+  margin-top: -$size/1.5;
+  margin-left: -$size;
+  @include transform(rotate($rotate));
+}

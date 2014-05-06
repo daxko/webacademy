@@ -1,0 +1,61 @@
+@import 'mixins';
+
+
+html,
+body,
+.reveal {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+@media print {
+  a[href]:after {
+    content: " (" attr(href) ")";
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.backgrounds .slide-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -100;
+}
+
+@import 'slides';
+@import 'print';
