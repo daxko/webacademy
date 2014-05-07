@@ -135,8 +135,12 @@ a[href].workshop {
 
 .workshop:after {
   background-size: contain;
+  -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  -o-transform: scale(0.75);
   transform: scale(0.75);
 }
+
 
 .workshop.css:after {
   background-color: transparent;
