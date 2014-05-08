@@ -213,7 +213,7 @@ span {
 
       <section id="id-selector">
         <h1>Id Selector</h2>
-        <p class="secondary">Matches an element with the given id</p>
+        <p class="secondary">Matches any element with the given id</p>
         <p>In stylesheets, ids start with a hash <code class="inline">#id-name</code></p>
         <div>
           <style scoped contenteditable="true" data-trim>
@@ -473,7 +473,7 @@ input:focus {
 
       <section id="first-child-selector">
         <h1>:first-child selector</h2>
-        <p class="secondary">Matches an element that is the first child of its parent</p>
+        <p class="secondary">Matches any element that is the first child of its parent</p>
         <div>
           <style scoped contenteditable="true" data-trim>
 span:first-child {
@@ -500,7 +500,7 @@ span:first-child {
 
       <section id="not-selector">
         <h1>:not selector</h2>
-        <p class="secondary">Excludes elements not matching selector</p>
+        <p class="secondary">Matches any element not matched by the argument passed into <code class="inline">:not</code></p>
         <div>
           <style scoped contenteditable="true" data-trim>
 span:not(.class2) {
@@ -736,6 +736,51 @@ p {
       </section>
 
 
+      <section id="font-stack">
+        <h1>Font Families</h1>
+        <p class="secondary">Specify a prioritized list of fonts for the matching elements</p>
+        <p><em>Browsers will select the first font, from left to right, that is available. Fonts with spaces must be "quoted"</em></p>
+        <div>
+
+          <style type="text/css" scoped contenteditable="true" data-trim>
+.serif {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.sans-serif {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+          </style>
+          <code>
+            <pre contenteditable="true" data-trim>
+&lt;p&gt;&lt;span class="serif"&gt;Bacon ipsum&lt;/span&gt; dolor sit amet &lt;span class="sans-serif"&gt;ham hock&lt;/span&gt; jerky shank&lt;/p&gt;
+            </pre>
+          </code>
+        </div>
+      </section>
+
+
+      <section id="generic-fonts">
+        <h1>Generic Fonts</h1>
+        <p class="secondary">Always include at least one generic font in your font-family as a fallback</p>
+        <dl>
+          <dt><span style="font-family: serif;">serif</span></dt>
+          <dd>A typeface with finished strokes, flared, tapering ends, or actual serifed endings</dd>
+          <dt><span style="font-family: sans-serif;">sans-serif</span></dt>
+          <dd>A typeface with plain stroke endings</dd>
+          <dt><span style="font-family: monospace;">monospace</span></dt>
+          <dd>A fixed-width typeface, typically used for code</dd>
+          <dt><span style="font-family: cursive;">cursive</span></dt>
+          <dd>A typeface with joining strokes or other cursive characteristics</dd>
+          <dt><span style="font-family: fantasy;">fantasy</span></dt>
+          <dd>A primary decorative typeface</dd>
+        </dl>
+        <footer>
+          <a href="http://www.w3.org/TR/CSS2/fonts.html#font-family-prop">CSS2 Font-Family Specification</a>
+        </footer>
+      </section>
+
+
       <section id="css-specificity">
         <h1>CSS Specificity</h1>
       </section>
@@ -763,7 +808,7 @@ p {
       </section>
 
 
-      <section>
+      <section id="calculating-css-specificity">
         <h1>Calculating CSS Specificity</h1>
         <p class="secondary">Count the # of each type of attribute, this will determine the specificity</p>
         <table>
@@ -785,6 +830,8 @@ p {
                 <span class="fragment fade absolute" data-fragment-index="4">0</span>
                 <span class="fragment fade absolute" data-fragment-index="5">0</span>
                 <span class="fragment fade absolute" data-fragment-index="6">0</span>
+                <span class="fragment fade absolute" data-fragment-index="7">0</span>
+                <span class="fragment fade absolute" data-fragment-index="8">0</span>
               </td>
               <td>
                 <span class="fragment fade absolute" data-fragment-index="0">0</span>
@@ -792,26 +839,32 @@ p {
                 <span class="fragment fade absolute" data-fragment-index="2">0</span>
                 <span class="fragment fade absolute" data-fragment-index="3">0</span>
                 <span class="fragment fade absolute" data-fragment-index="4">0</span>
-                <span class="fragment fade absolute" data-fragment-index="5">1</span>
+                <span class="fragment fade absolute" data-fragment-index="5">0</span>
                 <span class="fragment fade absolute" data-fragment-index="6">1</span>
+                <span class="fragment fade absolute" data-fragment-index="7">1</span>
+                <span class="fragment fade absolute" data-fragment-index="8">2</span>
               </td>
               <td>
                 <span class="fragment fade absolute" data-fragment-index="0">0</span>
                 <span class="fragment fade absolute" data-fragment-index="1">0</span>
                 <span class="fragment fade absolute" data-fragment-index="2">0</span>
-                <span class="fragment fade absolute" data-fragment-index="3">1</span>
+                <span class="fragment fade absolute" data-fragment-index="3">0</span>
                 <span class="fragment fade absolute" data-fragment-index="4">1</span>
-                <span class="fragment fade absolute" data-fragment-index="5">0</span>
-                <span class="fragment fade absolute" data-fragment-index="6">1</span>
+                <span class="fragment fade absolute" data-fragment-index="5">1</span>
+                <span class="fragment fade absolute" data-fragment-index="6">0</span>
+                <span class="fragment fade absolute" data-fragment-index="7">1</span>
+                <span class="fragment fade absolute" data-fragment-index="8">2</span>
               </td>
               <td>
                 <span class="fragment fade absolute" data-fragment-index="0">0</span>
                 <span class="fragment fade absolute" data-fragment-index="1">1</span>
                 <span class="fragment fade absolute" data-fragment-index="2">2</span>
-                <span class="fragment fade absolute" data-fragment-index="3">0</span>
-                <span class="fragment fade absolute" data-fragment-index="4">1</span>
-                <span class="fragment fade absolute" data-fragment-index="5">0</span>
-                <span class="fragment fade absolute" data-fragment-index="6">3</span>
+                <span class="fragment fade absolute" data-fragment-index="3">3</span>
+                <span class="fragment fade absolute" data-fragment-index="4">0</span>
+                <span class="fragment fade absolute" data-fragment-index="5">1</span>
+                <span class="fragment fade absolute" data-fragment-index="6">0</span>
+                <span class="fragment fade absolute" data-fragment-index="7">3</span>
+                <span class="fragment fade absolute" data-fragment-index="8">1</span>
               </td>
             </tr>
           </tbody>
@@ -819,10 +872,12 @@ p {
         <div class="rule">
           <span class="fragment fade absolute" data-fragment-index="1">em { ... }</span>
           <span class="fragment fade absolute" data-fragment-index="2">em p { ... }</span>
-          <span class="fragment fade absolute" data-fragment-index="3">.myClass { ... }</span>
-          <span class="fragment fade absolute" data-fragment-index="4">.myClass p { ... }</span>
-          <span class="fragment fade absolute" data-fragment-index="5">#myId { ... }</span>
-          <span class="fragment fade absolute" data-fragment-index="6">#myId > p em .class + a { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="3">em p:before { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="4">.myClass { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="5">.myClass p { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="6">#myId { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="7">#myId > p em .class + a { ... }</span>
+          <span class="fragment fade absolute" data-fragment-index="8">#myId > #myId2 ~ em.class :last-child { ... }</span>
         </div>
         <footer>
           <ul>
@@ -856,8 +911,15 @@ p {
           }
 
           .rule {
+            height: 1em;
             text-align: center;
             font-size: 2em;
+          }
+
+          .rule > * {
+            width: 100%;
+            text-align: center;
+            left: 0;
           }
         </style>
       </section>
