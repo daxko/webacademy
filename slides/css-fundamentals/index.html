@@ -618,8 +618,10 @@ p:after {
       <section id="fixed-dimensions">
         <h1>Fixed Dimensions</h1>
 
-        <h3>px</h3>
-        <p class="secondary">Typically used to size screen elements</p>
+        <dl>
+          <dt>px</dt>
+          <dd>Typically used to size screen elements</dd>
+        </dl>
 
         <div>
           <p>Bacon ipsum</p>
@@ -644,11 +646,13 @@ p {
       <section id="relative-dimensions">
         <h1>Relative Dimensions</h1>
 
-        <h3>em</h3>
-        <p class="secondary">Used to size elements relative to the size of the inherited font</p>
+        <dl>
+          <dt>em</dt>
+          <dd>Used to size elements relative to the size of the inherited font</dd>
+          <dt>rem</dt>
+          <dd>Used to size elements relative to the font size of the root element (typically <code class="inline">&lt;html&gt;</code>)</dd>
+        </dl>
 
-        <h3>rem</h3>
-        <p class="secondary">Used to size elements relative to the font size of the root element (typically <code class="inline">&lt;html&gt;</code>)</p>
         <div>
           <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
           <style type="text/css" scoped contenteditable="true" data-trim>
@@ -665,11 +669,13 @@ p {
         <h1>Relative Dimensions (Percent)</h1>
         <p class="secondary">Percents can be used in height/width properties and font sizes</p>
 
-        <h3>font-size</h3>
-        <p class="secondary">Relative to the inherited font size</p>
+        <dl>
+          <dt>font-size</dt>
+          <dd>Relative to the inherited font size</dd>
+          <dt>width/height</dt>
+          <dd>Relative to the dimensions of the parent element</dd>
+        </dl>
 
-        <h3>width/height</h3>
-        <p class="secondary">Relative to the dimensions of the parent element</p>
         <div>
           <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
           <style type="text/css" scoped contenteditable="true" data-trim>
@@ -773,7 +779,7 @@ p {
           <dt><span style="font-family: cursive;">cursive</span></dt>
           <dd>A typeface with joining strokes or other cursive characteristics</dd>
           <dt><span style="font-family: fantasy;">fantasy</span></dt>
-          <dd>A primary decorative typeface</dd>
+          <dd>A primarily decorative typeface</dd>
         </dl>
         <footer>
           <a href="http://www.w3.org/TR/CSS2/fonts.html#font-family-prop">CSS2 Font-Family Specification</a>
