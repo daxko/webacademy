@@ -31,15 +31,97 @@ p {
   color: black;
 }
         </style>
-        <p class="chrome other hide">...but your browser doesn't support this feature. <span class="other hide">Try using <a href="http://google.com/chrome">Chrome</a> or <a href="http://mozilla.org/en-US/firefox/new/‎">Firefox</a></span></p>
+        <p class="chrome other hide">...but your browser doesn't support this feature. :( <span class="other hide">Try using <a href="http://google.com/chrome">Chrome</a> or <a href="http://mozilla.org/en-US/firefox/new/‎">Firefox</a></span></p>
         <p class="chrome hide">Please enable the "experimental Web Platform features" flag in <code class="inline">chrome://flags</code></p>
       </section>
 
 
+      <section id="css-and-html">
+        <h2>You can't talk about Cascading Style Sheets...</h2>
+        <p class="secondary">...without talking about HTML</h2>
+      </section>
+
+
+      <section id="css-and-html2" class="center">
+        <h2>HTML is used to define content</h2>
+        <p>vs</p>
+        <h2>Cascading Style Sheets are used to define style</h2>
+      </section>
+
+
+      <section id="html-elements">
+        <h1>HTML Elements &amp; Tags</h1>
+      </section>
+
+
+      <section id="elements">
+        <h2>Elements</h2>
+        <p class="secondary">Elements are used to give semantic context to a page or document</p>
+        <p>There are a number of different elements including:</p>
+        <ul>
+          <li>headings (<code class="inline">&lt;h1&gt;</code> through <code class="inline">&lt;h6&gt;</code>)</li>
+          <li>paragraphs (<code class="inline">&lt;p&gt;</code>)</li>
+          <li>anchors (<code class="inline">&lt;a&gt;</code>)</li>
+          <li>generic organization elements (such as <code class="inline">&lt;div&gt;</code> and <code class="inline">&lt;span&gt;</code>)</li>
+          <li>...and many others</li>
+        </ul>
+      </section>
+
+
+      <section id="tag">
+        <div style="margin-bottom: 1em;">
+          <h1 class="fragment fade" data-fragment-index="0"><em>This is an HTML tag...</em></h1>
+<pre style="font-size: 2em;">
+<span class="fragment selected" data-fragment-index="3">&lt;<span class="fragment selected" data-fragment-index="1">a</span> <span class="fragment selected" data-fragment-index="2">href="http://google.com"</span>&gt;</span><span class="fragment selected" data-fragment-index="5">Google</span><span class="fragment selected" data-fragment-index="4">&lt;/a&gt;</span>
+</pre>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="1">
+          <h2>Element</h2>
+          <p>Gives semantic context to a particular block of text or other elements</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="2">
+          <h2>Attribute</h2>
+          <p>Provides additional information about an element</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="3">
+          <h2>Opening Tag</h2>
+          <p>Marks the start of an element</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="4">
+          <h2>Closing Tag</h2>
+          <p>Marks the end of an element</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="5">
+          <h2>Content</h2>
+          <p>Can be text or additional elements</p>
+        </div>
+      </section>
+
+
+      <section id="attributes">
+        <h2>Attributes</h2>
+        <p class="secondary">Elements can have attributes that provide additional information</p>
+        <ul>
+          <li><strong>id</strong> - a unique identifier for the element</li>
+          <li><strong>class</strong> - an identifier to group elements</li>
+          <li><strong>style</strong> - inline style for an element (via CSS)</li>
+          <li><strong>title</strong> - a tooltip title for an element</li>
+          <li><strong>data-*</strong> - custom attributes for an element</li>
+          <li>...and others (dependant upon the element)
+        </ul>
+      </section>
+
+
+      <section id="css">
+        <h1>Cascading Style Sheets</h1>
+      </section>
+
+
       <section id="what-is-css">
-        <h2>What is CSS?</h2>
-        <p class="secondary">Fully known as Cascading Style Sheets</p>
-        <p>Describes how a page should be styled for a particular document</p>
+        <h2>What are Cascading Style Sheets?</h2>
+        <p class="secondary">Commonly abbreviated as "CSS"</p>
+        <p>Is a language describing how an element is rendered</p>
+        <p>Can define styles for screen, paper, or other media types</p>
         <p>Helps seperate style and presentation from content</p>
       </section>
 
@@ -60,10 +142,8 @@ p {
 
 
       <section id="include-styles-2">
-        <p class="secondary">However, please avoid using inline and embeded styles when possible</p
-        <p>This...</p>
+        <p class="secondary">However, you generally want to avoid using inline and embeded styles when possible</p
         <pre><code>&lt;link rel="stylesheet" href="style.css" /&gt;</code></pre>
-        <p>...is what you want to use to include stylesheets.</p>
         <p>Embeded and inline styles can get messy and difficult to maintain. Additionally, by linking stylesheets we're seperating <strong>content</strong> and <strong>style</strong></p>
       </section>
 
@@ -97,7 +177,7 @@ p {
           <h1 class="fragment fade" data-fragment-index="0"><em>This is what CSS looks like...</em></h1>
           <div class="fragment selected" data-fragment-index="1">
 <pre style="font-size: 2em;"><span class="fragment selected" data-fragment-index="2">em</span> <span class="fragment selected" data-fragment-index="3">{</span>
-  <span class="fragment selected" data-fragment-index="4">font-size</span>: <span class="fragment selected" data-fragment-index="5">12px</span>;
+  <span class="fragment selected" data-fragment-index="4"><span class="fragment selected" data-fragment-index="5">font-size</span>: <span class="fragment selected" data-fragment-index="6">12px</span>;</span>
 <span class="fragment selected" data-fragment-index="3">}</span></pre>
           </div>
         </div>
@@ -114,12 +194,16 @@ p {
           <p>Styles are grouped in blocks, starting and ending with opening and closing braces.</p>
         </div>
         <div class="fragment fade absolute" data-fragment-index="4">
-          <h2>Property</h2>
-          <p>The property part of the rule specifies what style property to apply</p>
+          <h2>Declaration</h2>
+          <p>Declarations contain a property and value that specify the style</p>
         </div>
         <div class="fragment fade absolute" data-fragment-index="5">
+          <h2>Property</h2>
+          <p>The property part of the declaration specifies what style property to apply</p>
+        </div>
+        <div class="fragment fade absolute" data-fragment-index="6">
           <h2>Value</h2>
-          <p>The value part of the rule specifies the property value. The valid values you can put here all depend on the type of property you are using</p>
+          <p>The value part of the declaration specifies the property value. The valid values you can put here all depend on the type of property you are using</p>
         </div>
       </section>
 
@@ -928,6 +1012,110 @@ p {
             left: 0;
           }
         </style>
+      </section>
+
+
+      <section id="vendor-prefixes">
+        <h1>Vendor Prefixes</h1>
+      </section>
+
+
+      <section id="vendor-prefixes-2">
+        <h1>Vendor Prefixes</h1>
+        <p class="secondary">Newer "Experimental" Properties can be Prefixed by Browser Vendors</p>
+        <table class="vendor-prefixes">
+          <tbody>
+            <tr>
+              <th><img src="../../images/chrome_128x128.png" height="32" width="32"/> Chrome <img src="../../images/safari_128x128.png" height="32" width="32"/> Safari</th>
+              <td>-webkit</td>
+            </tr>
+            <tr>
+              <th><img src="../../images/firefox_128x128.png" height="32" width="32"/> Firefox</th>
+              <td>-moz</td>
+            </tr>
+            <tr>
+              <th><img src="../../images/internet-explorer_128x128.png" height="32" width="32"/> Internet Explorer</th>
+              <td>-ms</td>
+            </tr>
+            <tr>
+              <th><img src="../../images/opera_128x128.png" height="32" width="32"/> Opera</th>
+              <td>-o</td>
+            </tr>
+          </tbody>
+        </table>
+        <style type="text/css">
+          table.vendor-prefixes {
+            margin: 0 auto;
+            width: 60%;
+            text-align: left;
+            line-height: 32px;
+          }
+
+          table.vendor-prefixes th,
+          table.vendor-prefixes td {
+            padding: 0.5em 0;
+            width: 30%;
+          }
+
+          .vendor-prefixes img {
+            vertical-align: middle;
+          }
+        </style>
+      </section>
+
+
+      <section id="vendor-prefixes-3">
+        <h1>Vendor Prefixes in Practice</h1>
+        <p class="secondary">...you may not need what you think you need</p>
+        <div>
+          <div class="border-radius" style="background-color: #e9e9e9; padding: 1em; margin-bottom: 1em;">
+            I'm a bordered box!
+          </div>
+<style type="text/css" scoped contenteditable="true" data-trim>
+.border-radius {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+}
+</style>
+        </div>
+        <footer>
+          Additional things to look at:
+          <a href="http://caniuse.com/#search=border-radius">caniuse</a>
+          <a href="https://github.com/ai/autoprefixer">Autoprefixer</a>
+        </footer>
+      </section>
+
+
+      <section id="vendor-prefixes-use">
+        <h2>When you use vendor prefixes, consider...</h2>
+        <ul>
+          <li>Provide the standard implementation last (cascading)</li>
+          <li>Check to see which prefixes you actually need to use</li>
+          <li>Use a pre-processor or post-processor to clean up vendor prefixes</li>
+        </ul>
+      </section>
+
+
+      <section id="at-rules">
+        <h1>@ Rules</h1>
+      </section>
+
+
+      <section id="at-media">
+        <h2>@media</h2>
+      </section>
+
+
+      <section id="at-font-face">
+        <h2>@font-face</h2>
+      </section>
+
+
+      <section id="box-model">
+        <h1>Box Model</h1>
       </section>
 
 

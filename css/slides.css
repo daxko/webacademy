@@ -92,6 +92,9 @@ footer {
 .hide {
   display: none; }
 
+section.center {
+  text-align: center; }
+
 #start {
   color: #fff; }
 
