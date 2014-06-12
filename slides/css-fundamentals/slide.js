@@ -69,4 +69,16 @@ forEach.call(document.querySelectorAll('code [contenteditable=true]'), function(
   editor.addEventListener('keyup', function() {
     container.innerHTML = this.textContent;
   });
+
 });
+
+// Chrome likes to add <div> tags instead of <br> tags inside contenteditable.
+// Let's prevent that for style tags
+if(window.chrome) {
+  document.addEventListener('keydown', function(e) {
+    if(e.target && e.target.tagName === 'STYLE' && e.keyCode === 13) {
+      document.execCommand('insertHTML', false, '<br/>')
+      e.preventDefault();
+    }
+  });
+}
