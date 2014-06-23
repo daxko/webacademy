@@ -1214,7 +1214,20 @@ p {
         <p class="secondary">Allows you to target specific rules for different media types</p>
         <div>
           <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
-<style type="text/css" scoped contenteditable="true" data-trim>
+          <style type="text/css">
+            @media screen {
+              #at-media p {
+                color: red;
+              }
+            }
+
+            @media print {
+              #at-media p {
+                color: black;
+              }
+            }
+          </style>
+<pre><code data-trim>
 @media screen {
   p {
     color: red;
@@ -1226,7 +1239,7 @@ p {
     color: black;
   }
 }
-</style>
+</code></pre>
         </div>
       </section>
 
@@ -1236,7 +1249,20 @@ p {
         <p class="secondary">Allows you to target specific rules for different sizes and devices</p>
         <div>
           <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
-<style type="text/css" scoped contenteditable="true" data-trim>
+          <style type="text/css">
+            @media screen and (max-width: 1200px) {
+              #at-media-responsive > div p {
+                color: red;
+              }
+            }
+
+            @media screen and (min-width: 1200px) {
+              #at-media-responsive > div p {
+                color: green;
+              }
+            }
+          </style>
+<pre><code data-trim>
 @media screen and (max-width: 1200px) {
   p {
     color: red;
@@ -1248,7 +1274,7 @@ p {
     color: green;
   }
 }
-</style>
+</code></pre>
         </div>
       </section>
 
@@ -1261,6 +1287,18 @@ p {
           <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
           <style type="text/css" scoped>
             p { font-family: Merriweather; }
+          </style>
+          <style type="text/css">
+            @font-face {
+              font-family: 'Merriweather';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Merriweather'), url(merriweather.woff) format('woff');
+            }
+
+            #at-font-face > div p {
+              font-family: Merriweather;
+            }
           </style>
 <pre><code data-trim>
 @font-face {
