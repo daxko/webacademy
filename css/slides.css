@@ -276,10 +276,12 @@ section:not(:first-child) {
   .reveal, body, html {
     overflow: visible; }
   body {
-    font-size: 18pt; }
+    font-size: 14pt; }
   .reveal {
     overflow: visible;
     height: auto; }
+  .absolute {
+    position: relative; }
   .progress, .controls {
     display: none !important; }
   .slides {
@@ -289,6 +291,12 @@ section:not(:first-child) {
     -moz-transform: none !important;
     -o-transition: none !important;
     transition: none !important; }
+  .screen-only {
+    display: none; }
+  .backgrounds {
+    display: none; }
+  #start {
+    color: #000; }
   section {
     page-break-after: always;
     visibility: visible !important;

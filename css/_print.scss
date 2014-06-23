@@ -14,12 +14,16 @@
   }
 
   body {
-    font-size: 18pt;
+    font-size: 14pt;
   }
 
   .reveal {
     overflow: visible;
     height: auto;
+  }
+
+  .absolute {
+    position: relative;
   }
 
   .progress,
@@ -31,6 +35,18 @@
     position: static;
     width: 100%;
     @include transform(none !important);
+  }
+
+  .screen-only {
+    display: none;
+  }
+
+  .backgrounds {
+    display: none;
+  }
+
+  #start {
+    color: #000;
   }
 
   section {
