@@ -648,12 +648,12 @@ p:after {
       </section>
 
 
-      <section id="css-properties">
-        <h1>CSS Properties</h1>
+      <section id="css-color">
+        <h1>CSS Colors</h1>
       </section>
 
 
-      <section id="css-colors">
+      <section id="css-color-values">
         <h1>Colors</h1>
         <p class="secondary">Color properties can be defined in a number of different ways</p>
 
@@ -696,6 +696,87 @@ p:after {
         <pre><code>p { color: #ff0000; }</code></pre>
         <p>is equivalent to</p>
         <pre><code>p { color: #f00; }</code></pre>
+      </section>
+
+
+      <section id="box-model">
+        <h1>Box Model</h1>
+      </section>
+
+
+      <section id="the-box-model">
+        <h1>The CSS Box Model</h1>
+        <p class="secondary">Every element in a document is a rectangular "box"</p>
+
+        <div>
+          <div class="box">
+            <div class="margin" data-fragment-index="1">
+              <span>margin <em class="fragment fade">dimensions outside of the box</em></span>
+              <div class="border" data-fragment-index="2">
+                <span>border <em class="fragment fade">surrounding the box</em></span>
+                <div class="padding" data-fragment-index="3">
+                  <span>padding <em class="fragment fade">dimensions inside of the box</em></span>
+                  <div class="content" data-fragment-index="4">
+                    <span>content <em class="fragment fade">additional elements or text inside the box</em></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <style type="text/css" scoped>
+            .box div {
+              padding: 1em;
+            }
+
+            .box em {
+              color: rgba(0, 0, 0, 0.4);
+            }
+
+            .box span {
+              position: relative;
+              top: -0.5em;
+            }
+
+            .box .margin {
+              border: 1px dashed #ccc;
+            }
+
+            .box .margin div {
+              border: 1px solid rgba(0, 0, 220, 0.1);
+              background-color: rgba(0, 0, 220, 0.1);
+            }
+          </style>
+        </div>
+
+      </section>
+
+
+      <section id="box-display">
+        <h1>Box Display</h1>
+        <dl>
+          <dt>inline</dt>
+          <dd>a box sitting along a line, default value for most elements</dd>
+          <dt>block</dt>
+          <dd>a box taking up as much width as it can</dd>
+          <dt>inline-block</dt>
+          <dd>an inline box that can also have height and width dimensions</dd>
+          <dt>none</dt>
+          <dd>element is removed from the layout</dd>
+        </dl>
+        <div>
+          <div class="box">Ceci n'est pas une box.</div>
+          <style type="text/css" scoped contenteditable="true" data-trim style="margin-top: 1em;">
+.box {
+  display: inline;
+}
+          </style>
+          <style type="text/css" scoped>
+            .box {
+              background: rgba(0, 200, 0, 0.3);
+            }
+          </style>
+        </div>
       </section>
 
 
@@ -805,6 +886,30 @@ p {
 }
           </style>
         </div>
+      </section>
+
+
+      <section id="the-box">
+        <h1>The Box</h1>
+        <div>
+          <div class="box">Ceci n'est pas une box.</div>
+          <style type="text/css" scoped contenteditable="true" data-trim style="margin-top: 1em;">
+.box {
+
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section id="fonts">
+        <h1 style="font-size: 2em;">
+          <span style="font-family: serif;">F</span>
+          <span style="font-family: sans-serif;">o</span>
+          <span style="font-family: monospace;">n</span>
+          <span style="font-family: cursive;">t</span>
+          <span style="font-family: fantasy;">s</span>
+        </h1>
       </section>
 
 
@@ -1106,16 +1211,75 @@ p {
 
       <section id="at-media">
         <h2>@media</h2>
+        <p class="secondary">Allows you to target specific rules for different media types</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+<style type="text/css" scoped contenteditable="true" data-trim>
+@media screen {
+  p {
+    color: red;
+  }
+}
+
+@media print {
+  p {
+    color: black;
+  }
+}
+</style>
+        </div>
+      </section>
+
+
+      <section id="at-media-responsive">
+        <h2>@media (responsive)</h2>
+        <p class="secondary">Allows you to target specific rules for different sizes and devices</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+<style type="text/css" scoped contenteditable="true" data-trim>
+@media screen and (max-width: 1200px) {
+  p {
+    color: red;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  p {
+    color: green;
+  }
+}
+</style>
+        </div>
       </section>
 
 
       <section id="at-font-face">
         <h2>@font-face</h2>
-      </section>
+        <p class="secondary">Allows you to include custom fonts</p>
+        <div>
+          <p>Bacon ipsum dolor sit amet ham hock jerky shank</p>
+          <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+          <style type="text/css" scoped>
+            p { font-family: Merriweather; }
+          </style>
+<pre><code data-trim>
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), url(merriweather.woff) format('woff');
+}
 
-
-      <section id="box-model">
-        <h1>Box Model</h1>
+p {
+  font-family: Merriweather;
+}
+</code></pre>
+        </div>
+        <footer>
+          <ul>
+            <li><a href="https://www.google.com/fonts">Google Fonts</a></li>
+          </ul>
+        </footer>
       </section>
 
 
@@ -1126,8 +1290,8 @@ p {
           <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Mozilla Developer Network</a></li>
           <li><a href="http://caniuse.com">Can I Use...</a></li>
           <li><a href="http://csstricks.com">Css Tricks</a></li>
-          <li><a href="http://codeacademy.com">Code Academy</a></li>
-          <li><a href="http://www.abookapart.com/products/css3-for-web-designers">CSS3 for Web Designers</a></li>
+          <li><a href="http://codecademy.com">Codecademy</a></li>
+          <li><a href="http://www.abookapart.com/">A Book Apart</a></li>
         </ul>
       </section>
 
