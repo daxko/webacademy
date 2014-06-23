@@ -243,3 +243,7 @@ code textarea {
 #start header {
   margin-left: 100px;
 }
+
+section:not(:first-child) {
+  display: none;
+}
