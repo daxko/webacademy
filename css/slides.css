@@ -201,13 +201,13 @@ code textarea {
   display: block;
   top: 50%;
   margin-top: -0.5em;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.025);
   border-radius: 2em;
   display: none;
   cursor: pointer;
   color: #fff; }
   .navigate-right:hover, .navigate-left:hover {
-    background-color: rgba(0, 0, 0, 0.2); }
+    background-color: rgba(0, 0, 0, 0.1); }
   .navigate-right.enabled, .navigate-left.enabled {
     display: block; }
 
