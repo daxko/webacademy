@@ -23,7 +23,19 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'css/slides.min.css': ['css/normalize.css', 'css/slides.css', 'css/tomorrow.css'],
-          'css/style.min.css': ['css/normalize.css', 'css/style.css']          
+          'css/style.min.css': ['css/normalize.css', 'css/style.css']
+        }
+      }
+    },
+
+    uglify: {
+      dist: {
+        options: {
+          sourceMap: true,
+          sourceMapName: 'js/slides.map'
+        },
+        files: {
+          'js/slides.min.js': ['js/reveal.js', 'js/highlight.min.js', 'js/slide.js']
         }
       }
     },
@@ -37,6 +49,6 @@ module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['sass', 'cssmin']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'uglify']);
 
 };

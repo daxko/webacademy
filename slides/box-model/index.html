@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+  <title>Breaking Down the Box | Web Academy</title>
+  <meta charset="utf-8"/>
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet" type="text/css"/>
+  <link href="../../css/slides.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+
+      <section id="start" data-background="#79C786">
+        <img src="../../images/box.png" height="96" />
+        <header>
+          Web Academy
+          <h1>Breaking Down the Box</h1>
+        </header>
+      </section>
+
+
+      <section id="no-scoped" class="screen-only">
+        <p>There are interactive style blocks in this presentation. <span class="chrome other">Try changing the <em>color</em> value.</span></p>
+        <style data-trim contenteditable="true" scoped>
+p {
+  color: black;
+}
+        </style>
+        <p class="chrome other hide">...but your browser doesn't support this feature. :( <span class="other hide">Try using <a href="http://google.com/chrome">Chrome</a> or <a href="http://mozilla.org/en-US/firefox/new/‎">Firefox</a></span></p>
+        <p class="chrome hide">Please enable the "experimental Web Platform features" flag in <code class="inline">chrome://flags</code></p>
+      </section>
+
+
+      <section>
+        <h1>Every element is a rectangular box</h1>
+        <div class="the-box">
+          <div class="fragment margin" data-fragment-index="5">
+            <div class="fragment border" data-fragment-index="4">
+              <div class="fragment padding" data-fragment-index="3">
+                <div class="fragment height" data-fragment-index="2">
+                  <div class="fragment width" data-fragment-index="1">
+                    <div class="box"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fragment properties" style="float: right;" data-fragment-index="0">
+          Elements can define several <strong>Properties</strong>
+          <ul>
+            <li class="fragment" data-fragment-index="1">Height</li>
+            <li class="fragment" data-fragment-index="2">Width</li>
+            <li class="fragment" data-fragment-index="3">Padding</li>
+            <li class="fragment" data-fragment-index="4">Border</li>
+            <li class="fragment" data-fragment-index="5">Margin</li>
+          </ul>
+        </div>
+        <style type="text/css">
+          .the-box {
+            float: left;
+          }
+
+          .the-box * {
+            -webkit-transition: all ease-out 400ms;
+            transition: all ease-out 400ms;
+            overflow: hidden;
+          }
+
+          .box {
+            height: 50px;
+            width: 50px;
+            background-color: #79C786;
+          }
+
+          .properties {
+            font-size: 1.4em;
+            float: right;
+            color: #999;
+            opacity: 0;
+            -webkit-transition: all ease-in-out 250ms;
+            transition: all ease-in-out 250ms;
+          }
+
+          .properties.visible {
+            opacity: 1;
+          }
+
+          strong {
+            color: #000;
+          }
+
+          li.current-fragment {
+            color: #000;
+            font-weight: 500;
+          }
+
+          .height.visible .box {
+            width: 200px;
+          }
+
+          .width.visible .box {
+            height: 200px;
+          }
+
+          .padding {
+            background-color: rgba(121, 199, 134, 0.5);
+          }
+
+          .padding.visible .box {
+            margin: 50px;
+          }
+
+          .border.visible {
+            border: 5px solid #2D7B3A;
+          }
+
+          .margin.visible {
+            margin: 50px;
+          }
+        </style>
+      </section>
+
+
+      <section>
+        <h1>Every element also has a display property</h1>
+        <div class="the-box">
+          <div class="box">
+          </div>
+        </div>
+        <div style="float: right; color: #777; text-align: center; font-size: 1.2em;">
+          <p>There's <strong>block level</strong> elements</p>
+          <p><strong>inline level</strong> elements</p>
+          <p>and <strong>inline-block</strong> level elements</p>
+        </div>
+      </section>
+
+
+      <section>
+        <h1>Box sizing</h1>
+        <p>By default, the total width of the box is <strong>width + padding + border</strong></p>
+
+        <div>
+          Fixed 200px Box <div class="box" style="width: 200px; height: 50px;"></div>
+        </div>
+
+        <div style="margin-top: 30px;">
+          Our box <div class="box"></div>
+          <p>If we want to make the box <em>actually</em> 200 pixels, we need to subtract the padding and border dimensions</p>
+          <style scoped contenteditable="true" data-trim style="margin-top: 30px;">
+.box {
+  width: 200px;
+  padding: 10px;
+  border: 5px solid #2d7b3a;
+}
+          </style>
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="../../js/slides.min.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-52258243-1', 'daxko.github.io');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>
