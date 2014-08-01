@@ -59,7 +59,7 @@ p {
             <li class="fragment" data-fragment-index="5">Margin</li>
           </ul>
         </div>
-        <style type="text/css">
+        <style type="text/css" scoped>
           .the-box {
             float: left;
           }
@@ -127,37 +127,177 @@ p {
 
       <section>
         <h1>Every element also has a display property</h1>
-        <div class="the-box">
-          <div class="box">
-          </div>
-        </div>
-        <div style="float: right; color: #777; text-align: center; font-size: 1.2em;">
-          <p>There's <strong>block level</strong> elements</p>
-          <p><strong>inline level</strong> elements</p>
-          <p>and <strong>inline-block</strong> level elements</p>
+        <div style="color: #777; text-align: right; font-size: 1.2em;">
+          <p>There's <strong>block-level</strong> elements</p>
+          <p><strong>inline</strong> elements</p>
+          <p>and <strong>inline-block</strong> elements</p>
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">along with many others</a></p>
         </div>
       </section>
 
 
       <section>
+        <h1>Block Elements</h1>
+        <p>By default, elements start on a new line and can contain <strong>inline and block</strong> elements</p>
+        <div>
+          <div class="fragment padding" data-fragment-index="0">
+            <div class="fragment margin" data-fragment-index="1">
+              <div class="block">Bacon ipsum</div>
+              <div class="block">Meatloaf bacon pork chop ball tip short ribs</div>
+              <div class="block">Chuck t-bone hamburger</div>
+            </div>
+          </div>
+          <p class="fragment dimensions" data-fragment-index="0">You can set <strong class="fragment padding" data-fragment-index="0">padding</strong> and <strong class="fragment padding" data-fragment-index="1">margins</strong></p>
+          <style scoped>
+            .block {
+              background-color: #79C786;
+              -webkit-transition: all ease-in-out .4s;
+              transition: all ease-in-out .4s;
+            }
+
+            .dimensions {
+              font-size: 1.2em;
+              float: right;
+              color: #777;
+            }
+
+            strong.current-fragment {
+              color: #000;
+            }
+
+            .visible.padding .block {
+              padding: 15px;
+            }
+
+            .visible.margin .block {
+              margin: 15px;
+            }
+          </style>
+        </div>
+      </section>
+
+
+      <section>
+        <h1>Inline Elements</h1>
+        <p>By default, elements follow the text line and should only contain <strong>inline</strong> elements</p>
+        <div>
+          <div class="fragment padding" data-fragment-index="0">
+            <div class="fragment margin" data-fragment-index="1">
+              <div class="inline">Bacon ipsum</div>
+              <div class="inline">Meatloaf bacon pork chop ball tip short ribs</div>
+              <div class="inline">Chuck t-bone hamburger</div>
+            </div>
+          </div>
+          <p class="fragment dimensions" data-fragment-index="0">You can set <strong class="fragment padding" data-fragment-index="0">padding</strong> and <strong class="fragment padding" data-fragment-index="1">horizontal margins</strong> but not widths!</p>
+          <style scoped>
+            .inline {
+              display: inline;
+              background-color: #79C786;
+              -webkit-transition: all ease-in-out .4s;
+              transition: all ease-in-out .4s;
+            }
+
+            .dimensions {
+              font-size: 1.2em;
+              float: right;
+              color: #777;
+            }
+
+            strong.current-fragment {
+              color: #000;
+            }
+
+            .visible.padding .inline {
+              padding: 15px;
+            }
+
+            .visible.margin .inline {
+              margin: 15px;
+            }
+          </style>
+        </div>
+      </section>
+
+
+      <section>
+        <h1>Inline-Block Elements</h1>
+      </section>
+
+
+      <section>
         <h1>Box sizing</h1>
-        <p>By default, the total width of the box is <strong>width + padding + border</strong></p>
+        <p>By default, the total size of the box is <strong>width or height + padding + border</strong></p>
 
         <div>
-          Fixed 200px Box <div class="box" style="width: 200px; height: 50px;"></div>
+          Fixed 200px by 50px Box <div class="box" style="width: 200px; height: 50px; -webkit-transition: all ease-out 400ms; transition: all ease-out 400ms;"></div>
         </div>
 
         <div style="margin-top: 30px;">
           Our box <div class="box"></div>
-          <p>If we want to make the box <em>actually</em> 200 pixels, we need to subtract the padding and border dimensions</p>
+          <p>If we want to make the box <em>actually</em> the same size, we need to subtract the padding and border dimensions</p>
           <style scoped contenteditable="true" data-trim style="margin-top: 30px;">
 .box {
   width: 200px;
+  height: 50px;
   padding: 10px;
   border: 5px solid #2d7b3a;
 }
           </style>
         </div>
+      </section>
+
+
+      <section>
+        <h1>However, there's a better way</h1>
+      </section>
+
+
+      <section>
+        <h1>Box sizing</h1>
+        <p>We can use <code class="inline">box-sizing: border-box</code> to constrain our height and width</p>
+
+        <div>
+          Fixed 200px by 50px Box <div class="box" style="width: 200px; height: 50px; -webkit-transition: all ease-out 400ms; transition: all ease-out 400ms;"></div>
+        </div>
+
+        <div style="margin-top: 30px;">
+          Our box <div class="box"></div>
+          <style scoped contenteditable="true" data-trim style="margin-top: 30px;">
+.box {
+  box-sizing: border-box;
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  border: 5px solid #2d7b3a;
+}
+          </style>
+        </div>
+      </section>
+
+
+      <section>
+        <h2>You can safely use this today</h2>
+        <code>
+<pre>*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}</pre>
+        </code>
+      </section>
+
+
+      <section>
+        <h1>Positioning</h1>
+      </section>
+
+
+      <section>
+        <h1>Absolute and Relative</h1>
+      </section>
+
+
+      <section>
+        <h1>Floats</h1>
       </section>
 
 
